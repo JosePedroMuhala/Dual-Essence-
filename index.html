@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dual Essence — moda feminina e masculina, eletrodomésticos e muito mais. Faça o seu pedido pelo WhatsApp.">
+  <meta name="theme-color" content="#111111">
+  <title>Dual Essence | Estilo que veste, qualidade que fica</title>
+  <style>
+    :root{
+      --bg:#f7f7f7;--card:#fff;--text:#171717;--muted:#666;
+      --dark:#111;--accent:#c89b3c;--line:#e7e7e7;--success:#25d366;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    a{text-decoration:none;color:inherit}
+    button,input,select{font:inherit}
+    .topbar{background:#111;color:#fff;text-align:center;padding:8px 12px;font-size:13px}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;gap:16px}
+    .brand{font-weight:800;font-size:21px;letter-spacing:.4px}
+    .brand span{color:var(--accent)}
+    nav{display:flex;gap:20px;font-size:14px}
+    nav a:hover{color:var(--accent)}
+    .cart-btn{border:0;background:#111;color:#fff;border-radius:999px;padding:10px 15px;cursor:pointer}
+    .hero{background:linear-gradient(120deg,#111,#2b2b2b);color:#fff}
+    .hero-inner{max-width:1200px;margin:auto;padding:70px 18px 75px;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+    .eyebrow{color:#e2bf70;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:700}
+    h1{font-size:clamp(38px,6vw,68px);line-height:1.02;margin:12px 0 18px}
+    .hero p{max-width:620px;color:#ddd;font-size:18px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:10px;padding:13px 18px;font-weight:700;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#111}
+    .btn-light{background:#fff;color:#111}
+    .hero-box{border:1px solid #555;border-radius:22px;padding:30px;background:rgba(255,255,255,.05)}
+    .hero-box strong{display:block;font-size:34px}
+    section{max-width:1200px;margin:auto;padding:55px 18px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}
+    .section-head h2{font-size:32px}
+    .section-head p{color:var(--muted)}
+    .categories{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .category{padding:24px;border:1px solid var(--line);background:#fff;border-radius:16px;cursor:pointer}
+    .category:hover{transform:translateY(-2px);box-shadow:0 8px 25px #00000010}
+    .category b{display:block;font-size:19px;margin-bottom:5px}
+    .category span{color:var(--muted);font-size:14px}
+    .tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+    .search{flex:1;min-width:220px;padding:13px 15px;border:1px solid var(--line);border-radius:10px;background:#fff;outline:none}
+    .filter{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}
+    .products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .product{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+    .product-img{height:220px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:58px}
+    .product-body{padding:16px;display:flex;flex-direction:column;gap:7px;flex:1}
+    .tag{font-size:11px;text-transform:uppercase;color:#8b6b28;font-weight:700}
+    .product h3{font-size:17px}
+    .product p{font-size:13px;color:var(--muted)}
+    .price{font-size:19px;font-weight:800;margin-top:auto;padding-top:8px}
+    .add{width:100%;margin-top:10px;background:#111;color:#fff}
+    .add:hover{background:#333}
+    .empty{text-align:center;color:var(--muted);padding:35px;grid-column:1/-1}
+    .info{background:#111;color:#fff;max-width:none}
+    .info-inner{max-width:1200px;margin:auto;padding:55px 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+    .info h3{margin-bottom:8px}.info p{color:#ccc;font-size:14px}
+    footer{background:#090909;color:#aaa;text-align:center;padding:25px 18px;font-size:13px}
+    .whatsapp{position:fixed;right:18px;bottom:18px;z-index:60;width:56px;height:56px;border-radius:50%;background:var(--success);color:#fff;display:flex;align-items:center;justify-content:center;font-size:27px;box-shadow:0 8px 25px #0004}
+    .modal{display:none;position:fixed;inset:0;background:#0008;z-index:100;align-items:flex-end;justify-content:center}
+    .modal.open{display:flex}
+    .cart{background:#fff;width:min(560px,100%);max-height:90vh;border-radius:22px 22px 0 0;padding:22px;overflow:auto}
+    .cart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+    .close{border:0;background:#eee;width:38px;height:38px;border-radius:50%;cursor:pointer}
+    .cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+    .cart-item .emoji{font-size:30px}.cart-item-info{flex:1}.qty{display:flex;align-items:center;gap:8px}
+    .qty button{width:30px;height:30px;border:1px solid var(--line);background:#fff;border-radius:7px;cursor:pointer}
+    .total{display:flex;justify-content:space-between;font-size:20px;font-weight:800;padding:18px 0}
+    .checkout{width:100%;background:var(--success);color:#fff}
+    .note{font-size:12px;color:var(--muted);margin-top:10px}
+    @media(max-width:900px){.products{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr}.info-inner{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){nav{display:none}.categories{grid-template-columns:1fr}.products{grid-template-columns:1fr 1fr;gap:10px}.product-img{height:160px}.product-body{padding:12px}.info-inner{grid-template-columns:1fr}section{padding:40px 14px}.hero-inner{padding:55px 14px}.section-head{display:block}.section-head p{margin-top:5px}}
+    @media(max-width:380px){.products{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="topbar">🚚 Entregas em Angola • Pedidos rápidos pelo WhatsApp</div>
+
+  <header>
+    <div class="nav">
+      <a class="brand" href="#">DUAL <span>ESSENCE</span></a>
+      <nav>
+        <a href="#inicio">Início</a>
+        <a href="#categorias">Categorias</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="cart-btn" onclick="openCart()">🛒 Carrinho (<span id="cartCount">0</span>)</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Dual Essence</div>
+          <h1>Estilo que veste. Qualidade que fica.</h1>
+          <p>Moda feminina e masculina + eletrodomésticos. Encontra tudo o que precisas num só lugar e faz o teu pedido pelo WhatsApp.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#produtos">Ver produtos</a>
+            <a class="btn btn-light" href="#categorias">Explorar categorias</a>
+          </div>
+        </div>
+        <div class="hero-box">
+          <strong>🛍️</strong>
+          <p>Escolhe os produtos, adiciona ao carrinho e envia o pedido diretamente para o WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="categorias">
+      <div class="section-head">
+        <div><h2>Categorias</h2><p>Escolhe uma categoria para começar.</p></div>
+      </div>
+      <div class="categories">
+        <div class="category" onclick="setCategory('Feminino')"><b>👗 Moda Feminina</b><span>Vestidos, conjuntos e acessórios.</span></div>
+        <div class="category" onclick="setCategory('Masculino')"><b>👔 Moda Masculina</b><span>Roupa e estilo para homem.</span></div>
+        <div class="category" onclick="setCategory('Eletrodomésticos')"><b>🏠 Eletrodomésticos</b><span>Produtos para facilitar a tua casa.</span></div>
+      </div>
+    </section>
+
+    <section id="produtos">
+      <div class="section-head">
+        <div><h2>Produtos</h2><p>Produtos em destaque da Dual Essence.</p></div>
+      </div>
+      <div class="tools">
+        <input id="search" class="search" type="search" placeholder="🔎 Procurar produto..." oninput="renderProducts()">
+        <select id="filter" class="filter" onchange="renderProducts()">
+          <option value="Todos">Todas as categorias</option>
+          <option value="Feminino">Moda Feminina</option>
+          <option value="Masculino">Moda Masculina</option>
+          <option value="Eletrodomésticos">Eletrodomésticos</option>
+        </select>
+      </div>
+      <div id="products" class="products"></div>
+    </section>
+
+    <div class="info" id="contacto">
+      <div class="info-inner">
+        <div><h3>📱 Pedidos</h3><p>Escolhe os produtos e envia o teu carrinho pelo WhatsApp.</p></div>
+        <div><h3>🚚 Entrega</h3><p>Combina a zona e o método de entrega diretamente com a Dual Essence.</p></div>
+        <div><h3>💳 Pagamento</h3><p>Confirma o método de pagamento disponível no momento do pedido.</p></div>
+      </div>
+    </div>
+  </main>
+
+  <a class="whatsapp" id="waFloat" href="#" target="_blank" aria-label="WhatsApp">◉</a>
+
+  <div class="modal" id="cartModal" onclick="if(event.target===this)closeCart()">
+    <div class="cart">
+      <div class="cart-head">
+        <h2>🛒 O teu carrinho</h2>
+        <button class="close" onclick="closeCart()">✕</button>
+      </div>
+      <div id="cartItems"></div>
+      <div class="total"><span>Total</span><span id="cartTotal">0 Kz</span></div>
+      <button class="btn checkout" onclick="checkout()">Enviar pedido pelo WhatsApp</button>
+      <p class="note">Antes de publicar, substitui o número de WhatsApp no código pelo número oficial da Dual Essence.</p>
+    </div>
+  </div>
+
+  <footer>© <span id="year"></span> Dual Essence. Todos os direitos reservados.</footer>
+
+  <script>
+    /*
+      ============================
+      CONFIGURAÇÃO DA DUAL ESSENCE
+      ============================
+      1. Troca WHATSAPP_NUMBER pelo número oficial, com indicativo de Angola (244).
+      2. Altera/adiciona produtos no array PRODUCTS.
+    */
+    const WHATSAPP_NUMBER = "244958374723";
+
+    const PRODUCTS = [
+      {id:1,name:"Vestido Elegante",category:"Feminino",price:25000,emoji:"👗",desc:"Modelo elegante para ocasiões especiais."},
+      {id:2,name:"Conjunto Feminino",category:"Feminino",price:30000,emoji:"👚",desc:"Conjunto moderno e confortável."},
+      {id:3,name:"Camisa Masculina",category:"Masculino",price:22000,emoji:"👔",desc:"Camisa versátil para um visual elegante."},
+      {id:4,name:"Conjunto Masculino",category:"Masculino",price:35000,emoji:"🧥",desc:"Estilo moderno para várias ocasiões."},
+      {id:5,name:"Liquidificador",category:"Eletrodomésticos",price:45000,emoji:"🥤",desc:"Prático para preparar bebidas e alimentos."},
+      {id:6,name:"Ferro de Engomar",category:"Eletrodomésticos",price:28000,emoji:"♨️",desc:"Praticidade para o cuidado das roupas."},
+      {id:7,name:"Air Fryer",category:"Eletrodomésticos",price:85000,emoji:"🍟",desc:"Prepare refeições de forma prática."},
+      {id:8,name:"Sandálias Femininas",category:"Feminino",price:18000,emoji:"👡",desc:"Conforto e estilo para o dia a dia."}
+    ];
+
+    let cart = JSON.parse(localStorage.getItem("dualEssenceCart") || "[]");
+
+    const money = value => new Intl.NumberFormat("pt-AO").format(value) + " Kz";
+
+    function renderProducts(){
+      const query = document.getElementById("search").value.toLowerCase().trim();
+      const category = document.getElementById("filter").value;
+      const list = PRODUCTS.filter(p =>
+        (category === "Todos" || p.category === category) &&
+        (p.name.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query))
+      );
+      const el = document.getElementById("products");
+      if(!list.length){el.innerHTML='<div class="empty">Nenhum produto encontrado.</div>';return;}
+      el.innerHTML = list.map(p => `
+        <article class="product">
+          <div class="product-img">${p.emoji}</div>
+          <div class="product-body">
+            <span class="tag">${p.category}</span>
+            <h3>${p.name}</h3>
+            <p>${p.desc}</p>
+            <div class="price">${money(p.price)}</div>
+            <button class="btn add" onclick="addToCart(${p.id})">Adicionar ao carrinho</button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function setCategory(category){
+      document.getElementById("filter").value = category;
+      document.getElementById("search").value = "";
+      renderProducts();
+      document.getElementById("produtos").scrollIntoView({behavior:"smooth"});
+    }
+
+    function addToCart(id){
+      const existing = cart.find(i => i.id === id);
+      if(existing) existing.qty++;
+      else cart.push({id,qty:1});
+      saveCart();
+      openCart();
+    }
+
+    function saveCart(){
+      localStorage.setItem("dualEssenceCart",JSON.stringify(cart));
+      updateCart();
+    }
+
+    function updateCart(){
+      const count = cart.reduce((sum,i)=>sum+i.qty,0);
+      document.getElementById("cartCount").textContent = count;
+      const items = document.getElementById("cartItems");
+      if(!cart.length){
+        items.innerHTML='<p class="empty">O carrinho está vazio.</p>';
+        document.getElementById("cartTotal").textContent="0 Kz";
+        return;
+      }
+      let total = 0;
+      items.innerHTML = cart.map(item => {
+        const p = PRODUCTS.find(x=>x.id===item.id);
+        total += p.price * item.qty;
+        return `
+          <div class="cart-item">
+            <div class="emoji">${p.emoji}</div>
+            <div class="cart-item-info"><b>${p.name}</b><br><small>${money(p.price)}</small></div>
+            <div class="qty">
+              <button onclick="changeQty(${p.id},-1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${p.id},1)">+</button>
+            </div>
+          </div>`;
+      }).join("");
+      document.getElementById("cartTotal").textContent = money(total);
+    }
+
+    function changeQty(id,delta){
+      const item = cart.find(i=>i.id===id);
+      if(!item) return;
+      item.qty += delta;
+      if(item.qty <= 0) cart = cart.filter(i=>i.id!==id);
+      saveCart();
+    }
+
+    function openCart(){
+      document.getElementById("cartModal").classList.add("open");
+      updateCart();
+    }
+    function closeCart(){document.getElementById("cartModal").classList.remove("open")}
+
+    function checkout(){
+      if(!cart.length){alert("Adiciona pelo menos um produto ao carrinho.");return;}
+      let total=0;
+      const lines = cart.map(item=>{
+        const p=PRODUCTS.find(x=>x.id===item.id);
+        total += p.price*item.qty;
+        return `• ${p.name} x${item.qty} — ${money(p.price*item.qty)}`;
+      });
+      const message = `Olá, Dual Essence! 👋%0A%0AGostaria de fazer este pedido:%0A${lines.join("%0A")}%0A%0A*Total: ${money(total)}*%0A%0ANome:%0ALocalização/zona:%0AForma de pagamento:`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,"_blank");
+    }
+
+    document.getElementById("waFloat").href =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá, Dual Essence! Gostaria de fazer um pedido.")}`;
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderProducts();
+    updateCart();
+  </script>
+</body>
+</html>
