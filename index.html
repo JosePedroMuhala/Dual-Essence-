@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dual Essence — moda feminina e masculina, eletrodomésticos e muito mais. Faça o seu pedido pelo WhatsApp.">
+  <meta name="description" content="Dual Essence — moda feminina, acessórios e produtos para casa. Faça o seu pedido de forma rápida pelo WhatsApp.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.dualessence.ao/">
+  <meta property="og:title" content="Dual Essence | Estilo que veste, qualidade que fica">
+  <meta property="og:description" content="Moda, acessórios e produtos para casa. Faça o seu pedido pelo WhatsApp.">
+  <meta property="og:url" content="https://www.dualessence.ao/">
+  <meta property="og:type" content="website">
   <meta name="theme-color" content="#111111">
   <title>Dual Essence | Estilo que veste, qualidade que fica</title>
   <style>
@@ -41,7 +47,7 @@
     .section-head p{color:var(--muted)}
     .categories{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .category{padding:24px;border:1px solid var(--line);background:#fff;border-radius:16px;cursor:pointer}
-    .category:hover{transform:translateY(-2px);box-shadow:0 8px 25px #00000010}
+    .category:hover{transform:translateY(-2px);box-shadow:0 8px 25px #00000010;transition:.2s ease}
     .category b{display:block;font-size:19px;margin-bottom:5px}
     .category span{color:var(--muted);font-size:14px}
     .tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
@@ -49,7 +55,7 @@
     .filter{padding:13px;border:1px solid var(--line);border-radius:10px;background:#fff}
     .products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
     .product{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-    .product-img{height:220px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:58px}
+    .product-img{height:220px;background:linear-gradient(135deg,#f2f2f2,#e8e8e8);display:flex;align-items:center;justify-content:center;font-size:58px}
     .product-body{padding:16px;display:flex;flex-direction:column;gap:7px;flex:1}
     .tag{font-size:11px;text-transform:uppercase;color:#8b6b28;font-weight:700}
     .product h3{font-size:17px}
@@ -101,7 +107,7 @@
         <div>
           <div class="eyebrow">Dual Essence</div>
           <h1>Estilo que veste. Qualidade que fica.</h1>
-          <p>Moda feminina e masculina + eletrodomésticos. Encontra tudo o que precisas num só lugar e faz o teu pedido pelo WhatsApp.</p>
+          <p>Moda feminina, acessórios e produtos para casa. Encontra produtos selecionados num só lugar e faz o teu pedido pelo WhatsApp.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#produtos">Ver produtos</a>
             <a class="btn btn-light" href="#categorias">Explorar categorias</a>
@@ -120,8 +126,8 @@
       </div>
       <div class="categories">
         <div class="category" onclick="setCategory('Feminino')"><b>👗 Moda Feminina</b><span>Vestidos, conjuntos e acessórios.</span></div>
-        <div class="category" onclick="setCategory('Masculino')"><b>👔 Moda Masculina</b><span>Roupa e estilo para homem.</span></div>
-        <div class="category" onclick="setCategory('Eletrodomésticos')"><b>🏠 Eletrodomésticos</b><span>Produtos para facilitar a tua casa.</span></div>
+        <div class="category" onclick="setCategory('Acessórios')"><b>🎒 Acessórios</b><span>Mochilas, bolsas e outros acessórios.</span></div>
+        <div class="category" onclick="setCategory('Casa')"><b>🏠 Casa</b><span>Tapetes e produtos para o teu espaço.</span></div>
       </div>
     </section>
 
@@ -134,11 +140,22 @@
         <select id="filter" class="filter" onchange="renderProducts()">
           <option value="Todos">Todas as categorias</option>
           <option value="Feminino">Moda Feminina</option>
-          <option value="Masculino">Moda Masculina</option>
-          <option value="Eletrodomésticos">Eletrodomésticos</option>
+          <option value="Acessórios">Acessórios</option>
+          <option value="Casa">Casa</option>
         </select>
       </div>
       <div id="products" class="products"></div>
+    </section>
+
+    <section aria-label="Compra com confiança">
+      <div class="section-head">
+        <div><h2>Compra com confiança</h2><p>Um processo simples para fazer o teu pedido.</p></div>
+      </div>
+      <div class="categories">
+        <div class="category"><b>📱 Pedido fácil</b><span>Adiciona os produtos ao carrinho e envia o pedido pelo WhatsApp.</span></div>
+        <div class="category"><b>🚚 Entrega combinada</b><span>Confirma a zona, o valor e o horário de entrega com a nossa equipa.</span></div>
+        <div class="category"><b>🤝 Atendimento humano</b><span>Recebe confirmação do pedido antes de concluir a compra.</span></div>
+      </div>
     </section>
 
     <div class="info" id="contacto">
@@ -161,11 +178,11 @@
       <div id="cartItems"></div>
       <div class="total"><span>Total</span><span id="cartTotal">0 Kz</span></div>
       <button class="btn checkout" onclick="checkout()">Enviar pedido pelo WhatsApp</button>
-      <p class="note">Antes de publicar, substitui o número de WhatsApp no código pelo número oficial da Dual Essence.</p>
+      <p class="note">A tua encomenda será confirmada pela equipa da Dual Essence antes da entrega.</p>
     </div>
   </div>
 
-  <footer>© <span id="year"></span> Dual Essence. Todos os direitos reservados.</footer>
+  <footer>© <span id="year"></span> Dual Essence. Todos os direitos reservados. • www.dualessence.ao</footer>
 
   <script>
     /*
@@ -178,14 +195,13 @@
     const WHATSAPP_NUMBER = "244958374723";
 
     const PRODUCTS = [
-      {id:1,name:"Vestido Elegante",category:"Feminino",price:25000,emoji:"👗",desc:"Modelo elegante para ocasiões especiais."},
-      {id:2,name:"Conjunto Feminino",category:"Feminino",price:30000,emoji:"👚",desc:"Conjunto moderno e confortável."},
-      {id:3,name:"Camisa Masculina",category:"Masculino",price:22000,emoji:"👔",desc:"Camisa versátil para um visual elegante."},
-      {id:4,name:"Conjunto Masculino",category:"Masculino",price:35000,emoji:"🧥",desc:"Estilo moderno para várias ocasiões."},
-      {id:5,name:"Liquidificador",category:"Eletrodomésticos",price:45000,emoji:"🥤",desc:"Prático para preparar bebidas e alimentos."},
-      {id:6,name:"Ferro de Engomar",category:"Eletrodomésticos",price:28000,emoji:"♨️",desc:"Praticidade para o cuidado das roupas."},
-      {id:7,name:"Air Fryer",category:"Eletrodomésticos",price:85000,emoji:"🍟",desc:"Prepare refeições de forma prática."},
-      {id:8,name:"Sandálias Femininas",category:"Feminino",price:18000,emoji:"👡",desc:"Conforto e estilo para o dia a dia."}
+      {id:1,name:"Tapete preto/vermelho/branco",category:"Casa",price:35000,emoji:"🟥",desc:"Tapete moderno com combinação de preto, vermelho e branco."},
+      {id:2,name:"Tapete cinza/preto",category:"Casa",price:30000,emoji:"⬛",desc:"Tapete elegante em tons de cinza e preto."},
+      {id:3,name:"Tapete ondulado",category:"Casa",price:45000,emoji:"〰️",desc:"Modelo ondulado para dar um toque moderno ao ambiente."},
+      {id:4,name:"Mochila",category:"Acessórios",price:15000,emoji:"🎒",desc:"Mochila prática para o dia a dia."},
+      {id:5,name:"Bolsa + sandálias",category:"Feminino",price:22000,emoji:"👜",desc:"Combinação de bolsa e sandálias para um visual completo."},
+      {id:6,name:"Sandália prateada",category:"Feminino",price:15000,emoji:"👡",desc:"Sandália prateada elegante para várias ocasiões."},
+      {id:7,name:"Sandália colorida",category:"Feminino",price:15000,emoji:"🌈",desc:"Sandália colorida para um look moderno e descontraído."}
     ];
 
     let cart = JSON.parse(localStorage.getItem("dualEssenceCart") || "[]");
