@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dual Essence — moda feminina e masculina, acessórios e eletrodomésticos. Faça o seu pedido pelo WhatsApp.">
+  <meta name="theme-color" content="#111111">
+  <title>Dual Essence | Estilo que veste, qualidade que fica.</title>
+
+  <style>
+    :root{
+      --bg:#f7f7f7;
+      --card:#ffffff;
+      --text:#171717;
+      --muted:#6b6b6b;
+      --dark:#111111;
+      --accent:#c9a227;
+      --border:#e7e7e7;
+      --danger:#b42318;
+      --success:#16803c;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    a{text-decoration:none;color:inherit}
+
+    .topbar{
+      background:var(--dark);
+      color:#fff;
+      text-align:center;
+      padding:8px 12px;
+      font-size:13px;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.96);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:blur(10px);
+    }
+
+    .nav{
+      max-width:1200px;
+      margin:auto;
+      min-height:70px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      font-size:20px;
+    }
+
+    .brand-mark{
+      width:40px;height:40px;
+      display:grid;place-items:center;
+      border-radius:50%;
+      background:var(--dark);
+      color:#fff;
+      font-size:19px;
+    }
+
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{font-size:14px;font-weight:700}
+    nav a:hover{color:var(--accent)}
+
+    .cart-btn{
+      border:0;
+      background:var(--dark);
+      color:#fff;
+      border-radius:12px;
+      padding:10px 13px;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      gap:7px;
+    }
+
+    .count{
+      min-width:22px;height:22px;
+      padding:0 6px;
+      display:inline-grid;place-items:center;
+      border-radius:50%;
+      background:var(--accent);
+      color:#111;
+      font-size:12px;
+    }
+
+    .hero{
+      background:linear-gradient(135deg,#111 0%,#292929 60%,#4a3c15 100%);
+      color:#fff;
+      padding:65px 18px;
+    }
+
+    .hero-inner{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:35px;
+      align-items:center;
+    }
+
+    .hero h1{
+      font-size:clamp(36px,6vw,66px);
+      line-height:1.02;
+      margin-bottom:18px;
+    }
+
+    .hero p{
+      max-width:650px;
+      color:#ddd;
+      font-size:17px;
+      margin-bottom:25px;
+    }
+
+    .hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      border:0;
+      border-radius:12px;
+      padding:13px 18px;
+      font-weight:800;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+    }
+    .btn-primary{background:var(--accent);color:#111}
+    .btn-light{background:#fff;color:#111}
+    .btn-dark{background:#111;color:#fff}
+    .btn-whatsapp{background:#20b957;color:#fff}
+
+    .hero-card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:22px;
+      padding:25px;
+    }
+    .hero-card strong{display:block;font-size:30px;margin-bottom:7px}
+    .hero-card span{color:#ddd}
+
+    main{max-width:1200px;margin:auto;padding:45px 18px}
+
+    .section-title{text-align:center;margin-bottom:25px}
+    .section-title h2{font-size:30px}
+    .section-title p{color:var(--muted);margin-top:5px}
+
+    .categories{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-bottom:30px;
+    }
+    .filter{
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:999px;
+      padding:9px 15px;
+      font-weight:700;
+    }
+    .filter.active,.filter:hover{
+      background:var(--dark);
+      color:#fff;
+      border-color:var(--dark);
+    }
+
+    .search-wrap{
+      max-width:600px;
+      margin:0 auto 30px;
+      position:relative;
+    }
+    .search{
+      width:100%;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px 16px;
+      background:#fff;
+      outline:none;
+    }
+    .search:focus{border-color:var(--dark)}
+
+    .products{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .product{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+      transition:transform .2s,box-shadow .2s;
+    }
+    .product:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .product-img{
+      width:100%;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      background:#eee;
+      display:block;
+    }
+
+    .placeholder{
+      aspect-ratio:1/1;
+      display:grid;
+      place-items:center;
+      padding:20px;
+      text-align:center;
+      color:#777;
+      background:#eee;
+      font-size:14px;
+    }
+
+    .product-info{padding:15px;display:flex;flex-direction:column;flex:1}
+    .tag{
+      display:inline-block;
+      width:max-content;
+      font-size:11px;
+      font-weight:800;
+      background:#f1ead1;
+      padding:4px 8px;
+      border-radius:999px;
+      margin-bottom:8px;
+    }
+    .product h3{font-size:17px;margin-bottom:5px}
+    .product p{font-size:13px;color:var(--muted);margin-bottom:12px;flex:1}
+    .price{font-size:19px;font-weight:900;margin-bottom:12px}
+
+    .product-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .product-actions button{
+      border:0;border-radius:10px;padding:10px 7px;font-weight:800;font-size:12px;
+    }
+    .add{background:#111;color:#fff}
+    .order{background:#e8f8ee;color:#147b39}
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:45px;
+    }
+    .info-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+    }
+    .info-card .icon{font-size:28px;margin-bottom:8px}
+    .info-card h3{margin-bottom:6px}
+    .info-card p{color:var(--muted);font-size:14px}
+
+    footer{
+      background:#111;
+      color:#fff;
+      margin-top:20px;
+      padding:40px 18px 25px;
+    }
+    .footer-inner{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr;
+      gap:30px;
+    }
+    footer p{color:#bbb;font-size:14px;margin-top:8px}
+    footer h3{margin-bottom:8px}
+    .copyright{
+      max-width:1200px;
+      margin:30px auto 0;
+      padding-top:20px;
+      border-top:1px solid #333;
+      color:#999;
+      font-size:12px;
+      text-align:center;
+    }
+
+    .overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.5);
+      z-index:80;
+      display:none;
+    }
+    .overlay.show{display:block}
+
+    .cart{
+      position:fixed;
+      right:0;top:0;
+      width:min(430px,100%);
+      height:100vh;
+      background:#fff;
+      z-index:90;
+      transform:translateX(100%);
+      transition:transform .25s;
+      display:flex;
+      flex-direction:column;
+      box-shadow:-10px 0 35px rgba(0,0,0,.15);
+    }
+    .cart.open{transform:translateX(0)}
+    .cart-head{
+      padding:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--border);
+    }
+    .close{
+      border:0;background:#eee;
+      width:35px;height:35px;border-radius:50%;
+      font-size:20px;
+    }
+    .cart-items{flex:1;overflow:auto;padding:15px}
+    .cart-item{
+      display:grid;
+      grid-template-columns:58px 1fr auto;
+      gap:10px;
+      align-items:center;
+      padding:12px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .cart-item img,.cart-thumb{
+      width:58px;height:58px;
+      border-radius:10px;
+      object-fit:cover;
+      background:#eee;
+    }
+    .cart-item h4{font-size:14px}
+    .cart-item small{color:var(--muted)}
+    .qty{display:flex;gap:5px;align-items:center;margin-top:5px}
+    .qty button{
+      width:24px;height:24px;border:1px solid var(--border);
+      background:#fff;border-radius:6px;
+    }
+    .remove{
+      border:0;background:none;color:var(--danger);
+      font-size:12px;margin-top:4px;
+    }
+    .cart-foot{
+      padding:18px;
+      border-top:1px solid var(--border);
+    }
+    .total{
+      display:flex;
+      justify-content:space-between;
+      font-size:20px;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+    .checkout{
+      width:100%;
+      border:0;
+      background:#20b957;
+      color:#fff;
+      padding:14px;
+      border-radius:12px;
+      font-weight:900;
+    }
+    .empty{
+      text-align:center;
+      color:var(--muted);
+      padding:45px 15px;
+    }
+
+    .toast{
+      position:fixed;
+      bottom:20px;
+      left:50%;
+      transform:translate(-50%,20px);
+      background:#111;color:#fff;
+      padding:12px 18px;
+      border-radius:10px;
+      opacity:0;
+      pointer-events:none;
+      transition:.25s;
+      z-index:200;
+      font-size:14px;
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    @media(max-width:950px){
+      .products{grid-template-columns:repeat(3,1fr)}
+      .hero-inner{grid-template-columns:1fr}
+    }
+
+    @media(max-width:700px){
+      nav{display:none}
+      .products{grid-template-columns:repeat(2,1fr);gap:12px}
+      .product-info{padding:12px}
+      .product h3{font-size:15px}
+      .price{font-size:17px}
+      .product-actions{grid-template-columns:1fr}
+      .info-grid{grid-template-columns:1fr}
+      .footer-inner{grid-template-columns:1fr}
+      .hero{padding:45px 18px}
+      .hero h1{font-size:42px}
+    }
+
+    @media(max-width:400px){
+      .products{grid-template-columns:1fr}
+      .brand{font-size:17px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">🚚 Encomendas em Angola • Atendimento pelo WhatsApp</div>
+
+  <header>
+    <div class="nav">
+      <a href="#inicio" class="brand">
+        <span class="brand-mark">DE</span>
+        <span>Dual Essence</span>
+      </a>
+
+      <nav>
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <button class="cart-btn" onclick="openCart()">
+        🛒 Carrinho <span class="count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-inner">
+      <div>
+        <p style="font-weight:800;color:#d9bd55;margin-bottom:10px">DUAL ESSENCE • LOJA ONLINE</p>
+        <h1>Estilo que veste,<br>qualidade que fica.</h1>
+        <p>
+          Moda feminina e masculina, acessórios e produtos para a sua casa.
+          Escolha os seus produtos e faça o pedido diretamente pelo WhatsApp.
+        </p>
+        <div class="hero-buttons">
+          <a href="#produtos" class="btn btn-primary">Ver produtos</a>
+          <button class="btn btn-whatsapp" onclick="orderDirect()">📲 Pedir pelo WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <strong>Compra simples.</strong>
+        <span>Escolha → adicione ao carrinho → envie o pedido pelo WhatsApp.</span>
+        <hr style="border:0;border-top:1px solid rgba(255,255,255,.15);margin:20px 0">
+        <strong>Pagamento</strong>
+        <span>Combine a forma de pagamento e entrega diretamente com a Dual Essence.</span>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <section id="produtos">
+      <div class="section-title">
+        <h2>Os nossos produtos</h2>
+        <p>Escolha uma categoria ou pesquise pelo nome.</p>
+      </div>
+
+      <div class="search-wrap">
+        <input id="search" class="search" type="search" placeholder="🔎 Pesquisar produto..." oninput="renderProducts()">
+      </div>
+
+      <div class="categories">
+        <button class="filter active" data-category="Todos" onclick="setCategory('Todos',this)">Todos</button>
+        <button class="filter" data-category="Casa" onclick="setCategory('Casa',this)">🏠 Casa</button>
+        <button class="filter" data-category="Acessórios" onclick="setCategory('Acessórios',this)">👜 Acessórios</button>
+        <button class="filter" data-category="Calçado" onclick="setCategory('Calçado',this)">👡 Calçado</button>
+        <button class="filter" data-category="Moda" onclick="setCategory('Moda',this)">👗 Moda</button>
+      </div>
+
+      <div id="products" class="products"></div>
+      <p id="noResults" class="empty" style="display:none">Nenhum produto encontrado.</p>
+    </section>
+
+    <section id="sobre">
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="icon">🛍️</div>
+          <h3>Variedade</h3>
+          <p>Produtos selecionados para moda, acessórios e casa num só lugar.</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">📲</div>
+          <h3>Pedido pelo WhatsApp</h3>
+          <p>Faça o seu pedido rapidamente sem precisar criar uma conta.</p>
+        </div>
+        <div class="info-card">
+          <div class="icon">🚚</div>
+          <h3>Entrega</h3>
+          <p>Confirme connosco a disponibilidade e o valor da entrega antes de concluir.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="footer-inner">
+      <div>
+        <h3>Dual Essence</h3>
+        <p>Estilo que veste, qualidade que fica.</p>
+        <p>Moda feminina e masculina, acessórios e produtos para a casa.</p>
+      </div>
+      <div>
+        <h3>Atendimento</h3>
+        <p>📲 WhatsApp: <a href="https://wa.me/244958374723" target="_blank" rel="noopener">+244 958 374 723</a></p>
+        <p>📍 Angola</p>
+      </div>
+      <div>
+        <h3>Links</h3>
+        <p><a href="#produtos">Produtos</a></p>
+        <p><a href="#sobre">Sobre nós</a></p>
+        <p><a href="#contacto">Contacto</a></p>
+      </div>
+    </div>
+    <div class="copyright">
+      © <span id="year"></span> Dual Essence. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <div id="overlay" class="overlay" onclick="closeCart()"></div>
+
+  <aside id="cart" class="cart" aria-label="Carrinho de compras">
+    <div class="cart-head">
+      <h2>🛒 Seu carrinho</h2>
+      <button class="close" onclick="closeCart()" aria-label="Fechar">×</button>
+    </div>
+
+    <div id="cartItems" class="cart-items"></div>
+
+    <div class="cart-foot">
+      <div class="total">
+        <span>Total</span>
+        <span id="cartTotal">0 Kz</span>
+      </div>
+      <button class="checkout" onclick="checkoutWhatsApp()">📲 Enviar pedido pelo WhatsApp</button>
+    </div>
+  </aside>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    /*
+      IMPORTANTE:
+      Para trocar uma imagem, coloque o ficheiro na pasta /images/
+      e altere o campo "image" do produto para:
+      "images/nome-da-imagem.jpg"
+    */
+
+    const WHATSAPP = "244958374723";
+
+    const products = [
+      {
+        id: 1,
+        name: "Tapete preto/vermelho/branco",
+        price: 35000,
+        category: "Casa",
+        description: "Tapete decorativo para valorizar o ambiente.",
+        image: "images/tapete-preto-vermelho-branco.jpg"
+      },
+      {
+        id: 2,
+        name: "Tapete cinza/preto",
+        price: 30000,
+        category: "Casa",
+        description: "Design moderno para sala ou quarto.",
+        image: "images/tapete-cinza-preto.jpg"
+      },
+      {
+        id: 3,
+        name: "Tapete ondulado",
+        price: 45000,
+        category: "Casa",
+        description: "Modelo moderno com acabamento decorativo.",
+        image: "images/tapete-ondulado.jpg"
+      },
+      {
+        id: 4,
+        name: "Mochila",
+        price: 15000,
+        category: "Acessórios",
+        description: "Mochila prática para uso diário.",
+        image: "images/mochila.jpg"
+      },
+      {
+        id: 5,
+        name: "Bolsa + sandálias",
+        price: 22000,
+        category: "Acessórios",
+        description: "Conjunto elegante para complementar o seu visual.",
+        image: "images/bolsa-sandalias.jpg"
+      },
+      {
+        id: 6,
+        name: "Sandália prateada",
+        price: 15000,
+        category: "Calçado",
+        description: "Sandália feminina com acabamento prateado.",
+        image: "images/sandalia-prateada.jpg"
+      },
+      {
+        id: 7,
+        name: "Sandália colorida",
+        price: 15000,
+        category: "Calçado",
+        description: "Modelo colorido para diferentes ocasiões.",
+        image: "images/sandalia-colorida.jpg"
+      }
+    ];
+
+    let cart = JSON.parse(localStorage.getItem("dualEssenceCart") || "[]");
+    let selectedCategory = "Todos";
+
+    function money(value){
+      return new Intl.NumberFormat("pt-AO").format(value) + " Kz";
+    }
+
+    function escapeHtml(text){
+      return String(text)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function setCategory(category, button){
+      selectedCategory = category;
+      document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+      button.classList.add("active");
+      renderProducts();
+    }
+
+    function renderProducts(){
+      const container = document.getElementById("products");
+      const query = document.getElementById("search").value.toLowerCase().trim();
+
+      const filtered = products.filter(p => {
+        const categoryOK = selectedCategory === "Todos" || p.category === selectedCategory;
+        const searchOK = !query ||
+          p.name.toLowerCase().includes(query) ||
+          p.description.toLowerCase().includes(query) ||
+          p.category.toLowerCase().includes(query);
+        return categoryOK && searchOK;
+      });
+
+      document.getElementById("noResults").style.display = filtered.length ? "none" : "block";
+
+      container.innerHTML = filtered.map(p => `
+        <article class="product">
+          <div>
+            <img
+              class="product-img"
+              src="${escapeHtml(p.image)}"
+              alt="${escapeHtml(p.name)}"
+              loading="lazy"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+            >
+            <div class="placeholder" style="display:none">
+              📷<br>
+              <strong>${escapeHtml(p.name)}</strong><br>
+              Adicione a imagem em <code>/images/</code>
+            </div>
+          </div>
+
+          <div class="product-info">
+            <span class="tag">${escapeHtml(p.category)}</span>
+            <h3>${escapeHtml(p.name)}</h3>
+            <p>${escapeHtml(p.description)}</p>
+            <div class="price">${money(p.price)}</div>
+
+            <div class="product-actions">
+              <button class="add" onclick="addToCart(${p.id})">🛒 Adicionar</button>
+              <button class="order" onclick="buyNow(${p.id})">📲 Pedir</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function saveCart(){
+      localStorage.setItem("dualEssenceCart", JSON.stringify(cart));
+    }
+
+    function addToCart(id){
+      const existing = cart.find(item => item.id === id);
+      if(existing){
+        existing.qty++;
+      }else{
+        cart.push({id, qty:1});
+      }
+      saveCart();
+      updateCart();
+      showToast("Produto adicionado ao carrinho.");
+    }
+
+    function changeQty(id, amount){
+      const item = cart.find(i => i.id === id);
+      if(!item) return;
+      item.qty += amount;
+      if(item.qty <= 0){
+        cart = cart.filter(i => i.id !== id);
+      }
+      saveCart();
+      updateCart();
+    }
+
+    function removeFromCart(id){
+      cart = cart.filter(i => i.id !== id);
+      saveCart();
+      updateCart();
+    }
+
+    function updateCart(){
+      const count = cart.reduce((sum,item) => sum + item.qty, 0);
+      document.getElementById("cartCount").textContent = count;
+
+      const container = document.getElementById("cartItems");
+
+      if(!cart.length){
+        container.innerHTML = '<div class="empty">O seu carrinho está vazio.<br><br>Adicione alguns produtos.</div>';
+      }else{
+        container.innerHTML = cart.map(item => {
+          const p = products.find(product => product.id === item.id);
+          return `
+            <div class="cart-item">
+              <img class="cart-thumb" src="${escapeHtml(p.image)}" alt="" onerror="this.style.visibility='hidden'">
+              <div>
+                <h4>${escapeHtml(p.name)}</h4>
+                <small>${money(p.price)} cada</small>
+                <div class="qty">
+                  <button onclick="changeQty(${p.id},-1)">−</button>
+                  <strong>${item.qty}</strong>
+                  <button onclick="changeQty(${p.id},1)">+</button>
+                </div>
+                <button class="remove" onclick="removeFromCart(${p.id})">Remover</button>
+              </div>
+              <strong>${money(p.price * item.qty)}</strong>
+            </div>
+          `;
+        }).join("");
+      }
+
+      const total = cart.reduce((sum,item) => {
+        const p = products.find(product => product.id === item.id);
+        return sum + p.price * item.qty;
+      },0);
+
+      document.getElementById("cartTotal").textContent = money(total);
+    }
+
+    function openCart(){
+      document.getElementById("cart").classList.add("open");
+      document.getElementById("overlay").classList.add("show");
+    }
+
+    function closeCart(){
+      document.getElementById("cart").classList.remove("open");
+      document.getElementById("overlay").classList.remove("show");
+    }
+
+    function buildMessage(items){
+      let message = "Olá, Dual Essence! 👋%0A%0AGostaria de fazer o seguinte pedido:%0A%0A";
+      let total = 0;
+
+      items.forEach(item => {
+        const p = products.find(product => product.id === item.id);
+        const subtotal = p.price * item.qty;
+        total += subtotal;
+        message += `• ${encodeURIComponent(p.name)} — ${item.qty} x ${encodeURIComponent(money(p.price))} = ${encodeURIComponent(money(subtotal))}%0A`;
+      });
+
+      message += `%0A*Total: ${encodeURIComponent(money(total))}*%0A%0A`;
+      message += "Nome:%0ALocal de entrega:%0AForma de pagamento:%0A%0APodem confirmar a disponibilidade e a entrega, por favor?";
+
+      return message;
+    }
+
+    function checkoutWhatsApp(){
+      if(!cart.length){
+        showToast("Adicione produtos ao carrinho primeiro.");
+        return;
+      }
+
+      const url = `https://wa.me/${WHATSAPP}?text=${buildMessage(cart)}`;
+      window.open(url, "_blank", "noopener");
+    }
+
+    function buyNow(id){
+      const item = {id, qty:1};
+      const url = `https://wa.me/${WHATSAPP}?text=${buildMessage([item])}`;
+      window.open(url, "_blank", "noopener");
+    }
+
+    function orderDirect(){
+      const text = "Olá, Dual Essence! 👋 Gostaria de conhecer os produtos disponíveis e fazer um pedido.";
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+    }
+
+    function showToast(text){
+      const toast = document.getElementById("toast");
+      toast.textContent = text;
+      toast.classList.add("show");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.remove("show"),2500);
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderProducts();
+    updateCart();
+  </script>
+
+</body>
+</html>
